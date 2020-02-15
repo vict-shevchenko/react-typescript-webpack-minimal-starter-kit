@@ -22,6 +22,18 @@ module.exports = {
     devServer: {
         contentBase: './dist'
     },
+    devtool: 'source-map',
+    optimization: {
+        splitChunks: {
+            cacheGroups: {
+                vendor: {
+                    test: /[\\/]node_modules[\\/](react|react-dom)[\\/]/,
+                    name: 'vendor',
+                    chunks: 'all',
+                }
+            }
+        }
+    },
     plugins: [
         new HtmlWebpackPlugin({
             template: 'src/assets/template.html'
